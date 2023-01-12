@@ -27,8 +27,6 @@ public class lab1 {
                 }
             }
         }
-
-
         return mirror;
     }
     public static void print_char(char[][] car) {
