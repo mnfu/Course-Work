@@ -1,10 +1,10 @@
-public class Main {
+public class lab1 {
     public static void main(String[] args) {
         char[][] car;
         car = make_forward();
         print_char(car);
         print_char(make_mirror(car));
-
+        print_char(car, make_mirror(car));
     }
     public static char[][] make_mirror(char[][] car) {
         char[][] mirror = new char[4][13];
@@ -31,15 +31,27 @@ public class Main {
 
         return mirror;
     }
-    public static void print_char(char[][] car, char[][] car2, int method) {
-            for (int i = 0; i < car.length; i++) {
-                for (int j = 0; j < car[0].length *2; j++) {
-
+    public static void print_char(char[][] car) {
+        for (int i = 0; i < car.length; i++) {
+            for (int j = 0; j < car[0].length; j++) {
+                System.out.print(car[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    public static void print_char(char[][] car, char[][] car2) {
+        for (int i = 0; i < car.length; i++) {
+            for (int j = 0; j < car[0].length*2; j++) {
+                if(j < 13) {
                     System.out.print(car[i][j]);
                 }
-                System.out.println("");
+                else {
+                    System.out.print(car2[i][j-13]);
+                }
             }
+            System.out.println();
         }
+    }
     public static char[][] make_forward() {
         char[][] pixel = new char[4][13];
         pixel[0][0]=' ';
