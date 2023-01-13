@@ -1,16 +1,16 @@
 public class lab1 {
     public static void main(String[] args) {
-        char[][] car;
+        char[][] car; //create a 2d char array to manipulate around
         car = make_forward();
-        print_char(car);
-        print_char(make_mirror(car));
-        print_char(car, make_mirror(car));
+        print_char(car); //prints the car forwards
+        print_char(make_mirror(car)); //prints the car mirrored left to right
+        print_char(car, make_mirror(car)); //prints the forward car then the mirrored car right after it
     }
     public static char[][] make_mirror(char[][] car) {
-        char[][] mirror = new char[4][13];
+        char[][] mirror = new char[4][13]; //create a 2d char array to return later after manipulation
         for (int i = 0; i < car.length; i++) {
             for (int j = 0; j < car[0].length; j++) {
-                if(car[i][car[0].length - 1 - j] == '(') {
+                if(car[i][car[0].length - 1 - j] == '(') { //flips chars if they are there, then sets the flipped char into the array
                     mirror[i][j] = ')';
                 }
                 else if(car[i][car[0].length - 1 - j] == ')') {
@@ -29,7 +29,7 @@ public class lab1 {
         }
         return mirror;
     }
-    public static void print_char(char[][] car) {
+    public static void print_char(char[][] car) { //1st print char constructor, takes one input and prints it
         for (int i = 0; i < car.length; i++) {
             for (int j = 0; j < car[0].length; j++) {
                 System.out.print(car[i][j]);
@@ -37,20 +37,20 @@ public class lab1 {
             System.out.println();
         }
     }
-    public static void print_char(char[][] car, char[][] car2) {
+    public static void print_char(char[][] car, char[][] car2) { //2nd print char constructor, takes two inputs and prints them side by side
         for (int i = 0; i < car.length; i++) {
             for (int j = 0; j < car[0].length*2; j++) {
-                if(j < 13) {
+                if(j < car[0].length) { //seperates the inputs into two different printers to print line by line
                     System.out.print(car[i][j]);
                 }
                 else {
-                    System.out.print(car2[i][j-13]);
+                    System.out.print(car2[i][j-car[0].length]);
                 }
             }
             System.out.println();
         }
     }
-    public static char[][] make_forward() {
+    public static char[][] make_forward() { //copypasted make forward method for the assignment
         char[][] pixel = new char[4][13];
         pixel[0][0]=' ';
         pixel[0][1]=' ';
