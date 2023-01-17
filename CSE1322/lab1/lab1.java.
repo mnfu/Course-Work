@@ -1,5 +1,3 @@
-package CSE1322;
-
 public class lab1 {
     public static void main(String[] args) {
         char[][] car; //create a 2d char array to manipulate around
