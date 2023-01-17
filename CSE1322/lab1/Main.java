@@ -1,4 +1,4 @@
-public class lab1 {
+public class Main {
     public static void main(String[] args) {
         char[][] car; //create a 2d char array to manipulate around
         car = make_forward();
