@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class Assignment1 {
+class Main {
   public static ArrayList<String> testHand1() {
     ArrayList<String> h1 = new ArrayList<String>();
     h1.add("A of Hearts");
