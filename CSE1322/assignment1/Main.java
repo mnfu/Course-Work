@@ -1,6 +1,8 @@
+package CSE1322.assignment1;
+
 import java.util.ArrayList;
 
-class Main {
+public class Main {
   public static ArrayList<String> testHand1() {
     ArrayList<String> h1 = new ArrayList<String>();
     h1.add("A of Hearts");

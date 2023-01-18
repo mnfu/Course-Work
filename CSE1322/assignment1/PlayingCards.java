@@ -1,7 +1,9 @@
+package CSE1322.assignment1;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-class PlayingCards {
+public class PlayingCards {
   private ArrayList<String> deck = new ArrayList<String>();
 
   public PlayingCards() {
