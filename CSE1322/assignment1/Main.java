@@ -28,7 +28,7 @@ public class Main {
     h1.add("9 of Hearts");
     h1.add("9 of Spades");
     h1.add("9 of Clubs");
-    h1.add("9 of Dimonds");
+    h1.add("9 of Diamonds");
     h1.add("2 of Hearts");
     return h1;
   }
@@ -38,7 +38,7 @@ public class Main {
     h1.add("9 of Hearts");
     h1.add("9 of Spades");
     h1.add("2 of Clubs");
-    h1.add("2 of Dimonds");
+    h1.add("2 of Diamonds");
     h1.add("2 of Hearts");
     return h1;
   }
@@ -57,7 +57,7 @@ public class Main {
     ArrayList<String> h1 = new ArrayList<String>();
     h1.add("5 of Hearts");
     h1.add("8 of Clubs");
-    h1.add("9 of Dimonds");
+    h1.add("9 of Diamonds");
     h1.add("7 of Spades");
     h1.add("6 of Hearts");
     return h1;

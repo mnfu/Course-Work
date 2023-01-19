@@ -7,7 +7,7 @@ public class PlayingCards {
   private ArrayList<String> deck = new ArrayList<String>();
 
   public PlayingCards() {
-    String[] suite = new String[] {"Clubs","Dimonds","Hearts","Spades"};
+    String[] suite = new String[] {"Clubs","Diamonds","Hearts","Spades"};
     String[] values= new String[] {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
     for(int i=0;i<4;i++) {
       for(int j=0;j<13;j++) {

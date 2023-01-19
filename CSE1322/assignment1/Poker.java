@@ -57,4 +57,32 @@ class Poker {
             System.out.println();
         }
     }
+
+    public ArrayList<Integer> countSuite(ArrayList<String> suiteCounter) {
+        int clubs = 0; //counters to keep track of card suite #'s
+        int diamonds = 0;
+        int hearts = 0;
+        int spades = 0;
+        for(String cards : suiteCounter) { //iterate through the input array, & split by spaces
+            String[] suite = cards.split(" ");
+            if(suite[2].equals("Clubs")) {
+                clubs ++;
+            }
+            else if(suite[2].equals("Diamonds")) {
+                diamonds ++;
+            }
+            else if(suite[2].equals("Hearts")) {
+                hearts ++;
+            }
+            else if(suite[2].equals("Spades")) {
+                spades ++;
+            }
+        }
+        ArrayList<Integer> finalCounts = new ArrayList<Integer>(); //create array to return
+        finalCounts.add(0, clubs);
+        finalCounts.add(1, diamonds);
+        finalCounts.add(2, hearts);
+        finalCounts.add(3, spades);
+        return finalCounts;
+    }
 }
