@@ -1,4 +1,4 @@
-package CSE1322.assignment1;
+package assignment1;
 
 import java.util.ArrayList;
 import java.util.Random;
