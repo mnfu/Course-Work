@@ -1,5 +1,4 @@
-package CSE1322.lab1;
-
+package lab1;
 class Main {
     public static void main(String[] args) {
         char[][] car; //create a 2d char array to manipulate around

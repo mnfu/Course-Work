@@ -1,3 +1,5 @@
+package lab2;
+
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -5,8 +7,7 @@ public class Main {
         StockItem milk = new StockItem("1 Gallon of Milk", 3.60, 15);
         StockItem bread = new StockItem("1 Loaf of Bread", 1.98, 30);
         while(keepOn) {
-            System.out.println();
-            System.out.println("1. Sold One Milk");
+            System.out.println("\n1. Sold One Milk");
             System.out.println("2. Sold One Bread");
             System.out.println("3. Change price of Milk");
             System.out.println("4. Change price of Bread");
