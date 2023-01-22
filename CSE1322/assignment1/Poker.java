@@ -100,4 +100,62 @@ class Poker {
         }
         return cardValuesCounter;
     }
+
+    public int numPairs(int[] values) {
+        int counter = 0;
+        for(int i : values) {
+            if(values[i] == 2) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public int threeOfAKind(int[] values) {
+        int counter = 0;
+        for(int i : values) {
+            if(values[i] == 3) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public int fourOfAKind(int[] values) {
+        int counter = 0;
+        for(int i : values) {
+            if(values[i] == 4) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public boolean fullHouse(int[] values) {
+        if ((numPairs(values) == 1) && (threeOfAKind(values) == 1)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean straight(int[] values) {
+        for(int i = 0; i < 10; i++) {
+            if((values[i] == 1) && (values[i+1] == 1) && (values[i+2] == 1) && (values[i+3] == 1) && (values[i+4] == 1)) {
+                return true;
+            }
+            else if ((values[i+1] == 1) && (values[i+2] == 1) && (values[i+3] == 1) && (values[i+4] == 1) && (values[1] == 1)) { //Ace card catcher
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean flush(int[] suites) {
+        for(int i : suites) {
+            if(suites[i] == 5) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
