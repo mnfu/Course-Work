@@ -158,4 +158,18 @@ class Poker {
         }
         return false;
     }
+
+    public boolean straightFlush(int[]values, int[] suites) {
+        if(straight(values) && flush(suites)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean royalFlush(int[] values, int[] suites) {
+        if((flush(suites)) && (straight(values) && (values[10] == 1) && (values[1] == 1))) {
+            return true;
+        }
+        return false;
+    }
 }
