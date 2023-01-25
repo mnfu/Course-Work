@@ -23,7 +23,7 @@ class Poker {
         int handNum = 1; //used to swap between hands
         boolean h1 = false; //tracks length of hands
         boolean h2 = false;
-        for (int i = 0; i < 10; i++) {
+        for(int i = 0; i < 10; i++) {
             if (h1 && h2) {
                 break;
             } else if (handNum == 1) {
@@ -46,13 +46,13 @@ class Poker {
         if (hand == 1) {
             System.out.println("Player 1's hand:");
             for (String cards : hand1) {
-                System.out.print(cards);
+                System.out.print(cards + ", ");
             }
             System.out.println();
         } else if (hand == 2) {
             System.out.println("Player 2's hand: ");
             for (String cards : hand2) {
-                System.out.print(cards);
+                System.out.print(cards + ", ");
             }
             System.out.println();
         }
@@ -62,17 +62,11 @@ class Poker {
         int[] cardSuiteCounter = new int[4];
         for(String cards : hand) { //iterate through the input array, & split by spaces
             String[] suite = cards.split(" ");
-            if(suite[2].equals("Clubs")) {
-                cardSuiteCounter[0] = cardSuiteCounter[0] + 1;
-            }
-            else if(suite[2].equals("Diamonds")) {
-                cardSuiteCounter[1] = cardSuiteCounter[1] + 1;
-            }
-            else if(suite[2].equals("Hearts")) {
-                cardSuiteCounter[2] = cardSuiteCounter[2] + 1;
-            }
-            else if(suite[2].equals("Spades")) {
-                cardSuiteCounter[3] = cardSuiteCounter[3] + 1;
+            switch (suite[2]) {
+                case "Clubs" -> cardSuiteCounter[0] = cardSuiteCounter[0] + 1;
+                case "Diamonds" -> cardSuiteCounter[1] = cardSuiteCounter[1] + 1;
+                case "Hearts" -> cardSuiteCounter[2] = cardSuiteCounter[2] + 1;
+                case "Spades" -> cardSuiteCounter[3] = cardSuiteCounter[3] + 1;
             }
         }
         return cardSuiteCounter;
@@ -103,7 +97,7 @@ class Poker {
 
     public int numPairs(int[] values) {
         int counter = 0;
-        for(int i : values) {
+        for(int i = 1; i < 14; i++) {
             if(values[i] == 2) {
                 counter++;
             }
@@ -112,30 +106,25 @@ class Poker {
     }
 
     public int threeOfAKind(int[] values) {
-        int counter = 0;
-        for(int i : values) {
+        for(int i = 1; i < 14; i++) {
             if(values[i] == 3) {
-                counter++;
+                return i;
             }
         }
-        return counter;
+        return 0;
     }
 
     public int fourOfAKind(int[] values) {
-        int counter = 0;
-        for(int i : values) {
+        for(int i = 1; i < 14; i++) {
             if(values[i] == 4) {
-                counter++;
+                return i;
             }
         }
-        return counter;
+        return 0;
     }
 
     public boolean fullHouse(int[] values) {
-        if ((numPairs(values) == 1) && (threeOfAKind(values) == 1)) {
-            return true;
-        }
-        return false;
+        return (numPairs(values) > 0) && (threeOfAKind(values) > 0);
     }
 
     public boolean straight(int[] values) {
@@ -151,7 +140,7 @@ class Poker {
     }
 
     public boolean flush(int[] suites) {
-        for(int i : suites) {
+        for(int i = 0; i < 4; i++) {
             if(suites[i] == 5) {
                 return true;
             }
@@ -160,16 +149,50 @@ class Poker {
     }
 
     public boolean straightFlush(int[]values, int[] suites) {
-        if(straight(values) && flush(suites)) {
-            return true;
-        }
-        return false;
+        return straight(values) && flush(suites);
     }
 
     public boolean royalFlush(int[] values, int[] suites) {
-        if((flush(suites)) && (straight(values) && (values[10] == 1) && (values[1] == 1))) {
-            return true;
+        return (flush(suites)) && (straight(values) && (values[10] == 1) && (values[1] == 1));
+    }
+
+    public String scoreHand(int handNum) {
+        ArrayList<String> hand = new ArrayList<String>();
+        if (handNum == 1) {
+            hand = hand1;
         }
-        return false;
+        else if (handNum == 2) {
+            hand = hand2;
+        }
+        if (royalFlush(countValues(hand), countSuite(hand))) {
+            return "Royal Flush";
+        }
+        else if (straightFlush(countValues(hand), countSuite(hand))) {
+            return "Straight Flush";
+        }
+        else if (fourOfAKind(countValues(hand)) > 0) {
+            return "4 of a kind";
+        }
+        else if (fullHouse(countValues(hand))) {
+            return "Full House";
+        }
+        else if (flush(countSuite(hand))) {
+            return "Flush";
+        }
+        else if (straight(countValues(hand))) {
+            return "Straight";
+        }
+        else if (threeOfAKind(countValues(hand)) > 0) {
+            return "3 of a kind";
+        }
+        else if (numPairs(countValues(hand)) == 2) {
+            return "2 pairs";
+        }
+        else if (numPairs(countValues(hand)) == 1) {
+            return "1 pair";
+        }
+        else {
+            return "High Card";
+        }
     }
 }
