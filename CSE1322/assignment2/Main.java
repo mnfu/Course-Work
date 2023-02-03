@@ -2,7 +2,7 @@ package assignment2;
 
 public class Main {
     public static void main(String[] args) {
-        //write methods here for the program to run correctly later
+        //write methods here for the program to run correctly later!
     }
 }
 
