@@ -5,9 +5,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        boolean active = true;
         Quiz quiz = new Quiz();
-        while(active) {
+        while(true) { //create a quiz menu & response reader
             System.out.println("What would you like to do?");
             System.out.println("1. Add a question to the quiz");
             System.out.println("2. Remove a question from the quiz");
@@ -29,18 +28,18 @@ public class Main {
                 quiz.giveQuiz();
             }
             else if (userInput.equals("5")) {
-                active = false;
+                break;
             }
         }
     }
 }
 
 class Question {
-    private String question = "";
-    private String answer = "";
-    int difficulty = 0;
+    private String question;
+    private String answer;
+    int difficulty;
 
-    public Question(String q, String a, int d) {
+    public Question(String q, String a, int d) { //question constructor
         question = q;
         answer = a;
         difficulty = d;
@@ -68,7 +67,7 @@ class Question {
 
     public int getDifficulty() {
         return difficulty;
-    }
+    } //unused, but required via lab instructions
 }
 
 class Quiz {
@@ -81,21 +80,23 @@ class Quiz {
         String qAnswer = input.nextLine();
         System.out.println("How Difficult (1-3)?");
         int qDifficulty = Integer.parseInt(input.nextLine());
-        if((qDifficulty != 1) && (qDifficulty != 2) && (qDifficulty != 3)) {
-            System.out.println("ERROR, NOT 1-3. QUESTION CREATION FAILED");
+        if((qDifficulty < 1) || (qDifficulty > 3)) { //checks to make sure the difficulty isn't anything beyond 1-3
+            System.out.println("ERROR, NOT 1-3. QUESTION CREATION FAILED"); //completely scraps the question creation
         }
-        Question newQ = new Question(qQuestion, qAnswer, qDifficulty);
-        Quiz.add(newQ);
+        else {
+            Question newQ = new Question(qQuestion, qAnswer, qDifficulty);
+            Quiz.add(newQ);
+        }
     }
 
     public void removeQuestion() {
         System.out.println("Choose the question to remove?");
         int num = 0;
-        for(Question q : Quiz) {
+        for(Question q : Quiz) { //prints out all questions with identifiers
             System.out.println(num + ". " + q.getQuestion());
             num++;
         }
-        Quiz.remove(Integer.parseInt(input.nextLine()));
+        Quiz.remove(Integer.parseInt(input.nextLine())); //removes the question ID chosen
     }
 
     public void modifyQuestion() {
@@ -106,6 +107,13 @@ class Quiz {
             num++;
         }
         int qNum = (Integer.parseInt(input.nextLine()));
+        System.out.println("qNum: " + qNum);
+        System.out.println("Quiz Size: " + Quiz.size());
+        System.out.println("Quiz Size + 1: " + (Quiz.size() + 1));
+        while(qNum >= Quiz.size() || qNum < 0) { //makes sure user only selects values within the quizzes bounds
+            System.out.println("ERROR: NOT A VALID QUESTION, please try again!");
+            qNum = (Integer.parseInt(input.nextLine()));
+        }
         System.out.println("What is the question text?");
         Quiz.get(qNum).setQuestion(input.nextLine());
         System.out.println("What is the answer?");
@@ -113,7 +121,7 @@ class Quiz {
         System.out.println("How Difficult (1-3)?");
         int qDifficulty = Integer.parseInt(input.nextLine());
         if((qDifficulty != 1) && (qDifficulty != 2) && (qDifficulty != 3)) {
-            System.out.println("ERROR, NOT 1-3. QUESTION DIFFICULTY WAS NOT CHANGED");
+            System.out.println("ERROR, NOT 1-3. QUESTION DIFFICULTY WAS NOT CHANGED"); //question is still modified, but the difficulty was not changed
         }
         else {
             Quiz.get(qNum).setDifficulty(qDifficulty);
@@ -121,7 +129,7 @@ class Quiz {
     }
 
     public void giveQuiz() {
-        int score = 0;
+        int score = 0; //tracker of correct answers
         for(Question q : Quiz) {
             System.out.println(q.getQuestion());
             if (input.nextLine().equals(q.getAnswer())) {

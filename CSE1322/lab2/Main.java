@@ -3,10 +3,9 @@ package lab2;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        boolean keepOn = true;
         StockItem milk = new StockItem("1 Gallon of Milk", 3.60, 15);
         StockItem bread = new StockItem("1 Loaf of Bread", 1.98, 30);
-        while(keepOn) {
+        while(true) { //create a menu for the "shopkeeper" to interact with, and do something with their response
             System.out.println("\n1. Sold One Milk");
             System.out.println("2. Sold One Bread");
             System.out.println("3. Change price of Milk");
@@ -17,14 +16,14 @@ public class Main {
             System.out.println("8. Quit");
             Scanner input = new Scanner(System.in);
             String userInput = input.nextLine();
-            if (userInput.equals("1")) {
+            if (userInput.equals("1")) { //"sold an item" options
                 milk.removeQuantity(1);
             }
             else if (userInput.equals("2")) {
                 bread.removeQuantity(1);
             }
             else if (userInput.equals("3")) {
-                System.out.println("What is the new price for Milk?");
+                System.out.println("What is the new price for Milk?"); //set price options
                 String newPrice = input.nextLine();
                 milk.setPrice(Double.parseDouble(newPrice));
             }
@@ -34,7 +33,7 @@ public class Main {
                 bread.setPrice(Double.parseDouble(newPrice));
             }
             else if (userInput.equals("5")) {
-                System.out.println("How many Milk did we get?");
+                System.out.println("How many Milk did we get?"); //set quantity options
                 String newQuantity = input.nextLine();
                 milk.addQuantity(Integer.parseInt(newQuantity));
             }
@@ -43,12 +42,12 @@ public class Main {
                 String newQuantity = input.nextLine();
                 bread.addQuantity(Integer.parseInt(newQuantity));
             }
-            else if (userInput.equals("7")) {
+            else if (userInput.equals("7")) { //inventory printer
                 System.out.println(milk);
                 System.out.println(bread);
             }
             else if (userInput.equals("8")) {
-                keepOn = false;
+                break;
             }
             else {
                 System.out.println("Not a valid item, please try again!");
@@ -57,54 +56,57 @@ public class Main {
     }
 }
 class StockItem {
-    private String description = "";
-    private int id = 0;
-    private double price = 0.0;
-    private int quantity = 0;
+    private String description;
+    private int id;
+    private double price;
+    private int quantity;
     private static int itemID = 0;
 
-    public StockItem() {
-        this.description = "no description provided";
-        this.id = itemID += 1;
-        this.price = 0.00;
-        this.quantity = 1;
+    public StockItem() { //default constructor
+        description = "no description provided";
+        id = itemID += 1;
+        price = 0.00;
+        quantity = 1;
     }
-    public StockItem(String description, double price, int quantity) {
-        this.description = description;
-        this.id = itemID += 1;
-        this.price = (int)(price*100+0.5)/(100d);
-        this.quantity = quantity;
+    public StockItem(String Description, double Price, int Quantity) {
+        description = Description;
+        id = itemID += 1;
+        price = (int)(Price*100+0.5)/(100d);
+        quantity = Quantity;
     }
-    public void setPrice(double price) {
-        if(price > 0) {
-            this.price = (int)(price*100+0.5)/(100d);
+    public void setPrice(double Price) {
+        if(Price > 0) {
+            price = (int)(Price*100+0.5)/(100d);
         }
         else {
             System.out.println("ERROR: PRICE CANNOT BE LESS THAN $0.00");
         }
     }
-    public void addQuantity(int quantity) {
-        this.quantity += quantity;
+    public void addQuantity(int Quantity) {
+        quantity += Quantity;
     }
-    public void removeQuantity(int quantity) {
-        if(this.quantity - quantity > 0) {
-            this.quantity -= quantity;
+    public void removeQuantity(int Quantity) {
+        if(quantity - Quantity >= 0) {
+            quantity -= Quantity;
+        }
+        else {
+            System.out.println("ERROR: QUANTITY CANNOT BE LESS THAN 0");
         }
     }
     public String getDescription() {
-        return this.description;
+        return description;
     }
     public int getId() {
-        return this.id;
+        return id;
     }
     public double getPrice() {
-        return this.price;
+        return price;
     }
     public int getQuantity() {
-        return this.quantity;
+        return quantity;
     }
     @Override
-    public String toString() {
-        return "Item number: " + id + " is " + description + ", has a price of: $" + price + " and we currently have: " + quantity + " in stock";
+    public String toString() { //an override toString for the assignment requirements
+        return "Item number: " + getId() + " is " + getDescription() + ", has a price of: $" + getPrice() + " and we currently have: " + getQuantity() + " in stock";
     }
 }

@@ -7,7 +7,7 @@ public class Main {
         Checking checking = new Checking();
         Savings savings = new Savings();
 
-        while(true) {
+        while(true) { //create a user menu for the banking system
             System.out.println("1. Withdraw from Checking");
             System.out.println("2. Withdraw from Savings");
             System.out.println("3. Deposit to Checking");
@@ -20,7 +20,7 @@ public class Main {
             String userInput = input.nextLine();
 
             if(userInput.equals("1")) {
-                System.out.println("How much would you like to withdraw from Checking?");
+                System.out.println("How much would you like to withdraw from Checking?"); //withdraw options
                 checking.withdrawal(Double.parseDouble(input.nextLine()));
             }
             else if(userInput.equals("2")) {
@@ -28,7 +28,7 @@ public class Main {
                 savings.withdrawal(Double.parseDouble(input.nextLine()));
             }
             else if(userInput.equals("3")) {
-                System.out.println("How much would you like to deposit to Checking?");
+                System.out.println("How much would you like to deposit to Checking?"); //deposit options
                 checking.deposit(Double.parseDouble(input.nextLine()));
             }
             else if(userInput.equals("4")) {
@@ -36,12 +36,12 @@ public class Main {
                 savings.deposit(Double.parseDouble(input.nextLine()));
             }
             else if(userInput.equals("5")) {
-                System.out.println("Your balance for checking " + checking.getAccountNumber() + " is " + checking.getBalance());
+                System.out.println("Your balance for checking " + checking.getAccountNumber() + " is " + checking.getBalance()); //balance options
             }
             else if(userInput.equals("6")) {
                 System.out.println("Your balance for savings " + savings.getAccountNumber() + " is " + savings.getBalance());
             }
-            else if(userInput.equals("7")) {
+            else if(userInput.equals("7")) { //interest adder, hard set rate of 1.5%/year
                 savings.addInterest();
             }
             else if(userInput.equals("8")) {
@@ -51,7 +51,7 @@ public class Main {
     }
 }
 
-class Account {
+class Account { //parent class for all the account types
     private static int accountNumberTracker = 10000;
     private final int accountNumber;
     private double Balance;
@@ -71,9 +71,9 @@ class Account {
 
     public double getBalance() {
         return (double)Math.round(Balance*100)/100;
-    }
+    } //presents a clean rounded balance, in this case because of interest adjustments to the balance
 
-    public void setBalance(double amount) {
+    public void setBalance(double amount) { //unused setBalance method required for lab
         Balance = amount;
     }
 
@@ -88,7 +88,7 @@ class Account {
 }
 
 class Checking extends Account {
-    public Checking() {
+    public Checking() { //passes the constructor values to the parent constructor
         super();
     }
 
@@ -100,7 +100,7 @@ class Checking extends Account {
     public void withdrawal(double amount) {
         if(getBalance() - amount < 0) {
             System.out.println("Charging an overdraft fee of $20 because account is below $0");
-            super.withdrawal(amount+20);
+            super.withdrawal(amount+20); //call the parent withdrawal method with the new added fee on top
         }
         else {
             super.withdrawal(amount);
@@ -110,7 +110,7 @@ class Checking extends Account {
 
 class Savings extends Account {
     private int depositNum = 1;
-    public Savings() {
+    public Savings() { //passes the constructor values to the parent constructor
         super();
     }
 
