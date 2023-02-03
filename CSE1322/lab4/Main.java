@@ -8,7 +8,7 @@ public class Main {
         Savings savings = new Savings();
 
         while(true) { //create a user menu for the banking system
-            System.out.println("1. Withdraw from Checking");
+            System.out.println("\n1. Withdraw from Checking");
             System.out.println("2. Withdraw from Savings");
             System.out.println("3. Deposit to Checking");
             System.out.println("4. Deposit to Savings");
