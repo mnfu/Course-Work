@@ -107,9 +107,6 @@ class Quiz {
             num++;
         }
         int qNum = (Integer.parseInt(input.nextLine()));
-        System.out.println("qNum: " + qNum);
-        System.out.println("Quiz Size: " + Quiz.size());
-        System.out.println("Quiz Size + 1: " + (Quiz.size() + 1));
         while(qNum >= Quiz.size() || qNum < 0) { //makes sure user only selects values within the quizzes bounds
             System.out.println("ERROR: NOT A VALID QUESTION, please try again!");
             qNum = (Integer.parseInt(input.nextLine()));
