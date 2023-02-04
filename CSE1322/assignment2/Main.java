@@ -1,9 +1,59 @@
 package assignment2;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //write methods here for the program to run correctly later!
+        ArrayList<Lot> auction = new ArrayList<Lot>();
+        mainMenu(auction);
     }
+    public static Lot getNextLot(ArrayList<Lot> auction) {
+        if(auction.size() > 0) {
+            Lot nextLot = auction.get(0);
+            auction.remove(0);
+            return nextLot;
+        }
+        else {
+            return new Lot();
+        }
+    }
+
+    public static void addItem(ArrayList<Lot> auction) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("What is the description of this item");
+        String desc = input.nextLine();
+        System.out.println("What is the starting bid");
+        String startBid = input.nextLine();
+        System.out.println("What is the bid increment");
+        String bidInc = input.nextLine();
+        auction.add(new Lot(desc, Integer.parseInt(startBid), Integer.parseInt(bidInc)));
+    }
+
+    public static void bid(Lot currentLot) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("How much would you like to bid?");
+        System.out.println("Minimum bid is " + currentLot.nextBid());
+        String userBid = input.nextLine();
+        if(Integer.parseInt(userBid) < currentLot.nextBid()) {
+            System.out.println("You must bid at least " + currentLot.nextBid());
+        }
+        else {
+            currentLot.setCurrentBid(Integer.parseInt(userBid));
+        }
+    }
+
+    public static void markSold(Lot currentLot) {
+        currentLot.markSold();
+        System.out.println(currentLot);
+    }
+
+    public static void mainMenu(ArrayList<Lot> auction) {
+        System.out.println("MENU SYSTEM"); //Add menu system later to make the auction functional
+    }
+
+
+
 }
 
 class Lot {
