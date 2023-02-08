@@ -37,7 +37,7 @@ public class Main {
 class Question {
     private String question;
     private String answer;
-    int difficulty;
+    private int difficulty;
 
     public Question(String q, String a, int d) { //question constructor
         question = q;
