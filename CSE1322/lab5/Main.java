@@ -1,12 +1,12 @@
-package lab5;
+package lab5; //focus polymorphism & abstract classes/methods
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Item[] Items = new Item[5];
+        Item[] Items = new Item[5]; //creates the array of Items to be used
 
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 5; i++) { //asks for 5 items overall
             Scanner input = new Scanner(System.in);
             System.out.println("Please enter B for Book or P for Periodical");
             String userInput = input.nextLine();
@@ -17,14 +17,14 @@ public class Main {
                 String author = input.nextLine();
                 System.out.println("Please enter the ISBN of the Book");
                 String isbn = input.nextLine();
-                Items[i] = new Book(title,Integer.parseInt(isbn),author);
+                Items[i] = new Book(title,Integer.parseInt(isbn),author); //adds the finished Book into the Item array, Wow "polymorphism"
             }
             else if(userInput.equals("P")) {
                 System.out.println("Please enter the name of the Periodical");
                 String title = input.nextLine();
                 System.out.println("Please enter the issue number");
                 String issNum = input.nextLine();
-                Items[i] = new Periodical(title,Integer.parseInt(issNum));
+                Items[i] = new Periodical(title,Integer.parseInt(issNum)); //adds the finished Periodical into the Item array
             }
         }
         System.out.println("Your Items:");
@@ -53,7 +53,7 @@ abstract class Item {
         title = newTitle;
     }
 
-    public abstract String getListing();
+    public abstract String getListing(); //abstract method that forces the children to implement a "getListing()" method
 
     @Override
     public String toString() {
@@ -94,7 +94,7 @@ class Book extends Item {
     }
 
     @Override
-    public String getListing() {
+    public String getListing() { //the required getListing() method
         return "Book Name - " + getTitle() + "\nAuthor - " + getAuthor() + "\nISBN# - " + getIsbn_number();
     }
 }
@@ -121,7 +121,7 @@ class Periodical extends Item {
     }
 
     @Override
-    public String getListing() {
+    public String getListing() { //the required getListing() method
         return "Periodical Title - " + getTitle() + "\nIssue # - " + getIssueNum();
     }
 }
