@@ -22,17 +22,42 @@ public class Main {
             int userInput = Integer.parseInt(input.nextLine());
             switch(userInput) { //switch cases for different user inputs
                 case 1:
+                    System.out.println("What is your name?");
+                    String tName = input.nextLine();
+                    System.out.println("What is your date of birth?");
+                    String tDob = input.nextLine();
+                    Customer newTest = new NewTest(tName, tDob); //create a customer of type NewTest to add to the Customer arraylist
+                    customerQueue.add(newTest);
                     break;
                 case 2:
+                    System.out.println("What is your name?");
+                    String rName = input.nextLine();
+                    Customer renew = new Renew(rName);
+                    customerQueue.add(renew);
                     break;
                 case 3:
+                    System.out.println("What is your name?");
+                    String mName = input.nextLine();
+                    System.out.println("What state did you move from?");
+                    String state = input.nextLine();
+                    Customer move = new Move(mName, state);
+                    customerQueue.add(move);
                     break;
                 case 4:
+                    System.out.println("What is your name?");
+                    String sName = input.nextLine();
+                    System.out.println("What violation did you commit?");
+                    String violation = input.nextLine();
+                    Customer suspended = new Suspended(sName, violation);
+                    customerQueue.add(suspended);
                     break;
                 case 5:
+                    for(Customer i : customerQueue) {
+                        System.out.println(i.getCustomerInfo());
+                    }
                     break;
                 case 6:
-                    active = false;
+                    active = false; //stop the while loop
                     break;
             }
         }

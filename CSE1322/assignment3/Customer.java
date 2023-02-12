@@ -3,7 +3,7 @@ package assignment3;
 public abstract class Customer {
     private char letter;
     private int number;
-    private static int nextA = 1;
+    private static int nextA = 1; //next "customer" tracker
     private static int nextB = 1;
     private static int nextC = 1;
     private static int nextD = 1;
@@ -45,5 +45,5 @@ public abstract class Customer {
         return letter+Integer.toString(number);
     }
 
-    public abstract String getCustomerInfo();
+    public abstract String getCustomerInfo(); //abstract method to make all children implement this method
 }
