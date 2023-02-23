@@ -2,7 +2,7 @@ package assignment4;
 
 public class CharacterThree extends Character {
     public CharacterThree() {
-        super("I'm tall wish a shiny metal helmet, and have a little green guy to go across space with me", "mandalorian");
+        super("I'm tall with a shiny metal helmet, and have a little green guy to go across space with me", "mandalorian");
     }
 
     @Override
