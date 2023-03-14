@@ -10,7 +10,7 @@ public class Main {
 
     public static String reverse(String str) {
         char arr[] = str.toCharArray();
-        if(arr.length<=1) {
+        if(arr.length<=1) { //terminating condition for the recursive loop
             return str;
         }
         String rev = str.substring(1,arr.length);
@@ -20,10 +20,10 @@ public class Main {
     public static String replace(String str) {
         char arr[] = str.toCharArray();
         for(int i = 0; i < arr.length; i++) {
-            if(arr[i] == '^') {
+            if(arr[i] == '^') { //replace all "^" with "v"
                 arr[i] = 'v';
             }
-            else if(arr[i] == 'v') {
+            else if(arr[i] == 'v') { //replace all "v" with "^"
                 arr[i] = '^';
             }
         }
@@ -31,7 +31,7 @@ public class Main {
     }
 
     public static String paperfold(int folds) {
-        if(folds <= 1) {
+        if(folds <= 1) { //terminating condition for the recursive loop
             return "v";
         }
         return replace(reverse(paperfold(folds-1))) + "v" + paperfold(folds-1);
