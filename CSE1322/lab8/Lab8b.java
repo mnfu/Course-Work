@@ -29,12 +29,12 @@ public class Lab8b {
     }
 
     public static boolean isReverse(String str1, String str2) {
-        if(str1.length() == 0 && str2.length() == 0) { //terminating condition
+        if(str1.length() == 0 && str2.length() == 0) { //main terminating condition
             return true;
         }
-        else if(str1.charAt(0) == str2.charAt(str2.length()-1)) { //conditionary recursive statement
-            return isReverse(str1.substring(1), str2.substring(0, str2.length()-1));
+        else if(str1.charAt(0) != str2.charAt(str2.length()-1)) {
+            return false;
         }
-        return false;
+        return isReverse(str1.substring(1), str2.substring(0, str2.length()-1));
     }
 }
