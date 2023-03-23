@@ -98,6 +98,9 @@ public class Main {
         catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        catch (NumberFormatException e) {
+            System.out.println("Error reading data from: C:\\Users\\BFTH0\\Documents\\Schoolwork\\CSE1322\\assignment6\\initialInvestmentUSD.txt");
+        }
         finally {
             if (pw != null){
                 pw.close();
@@ -120,6 +123,9 @@ public class Main {
         catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        catch (NumberFormatException e) {
+            System.out.println("Error reading data from: C:\\Users\\BFTH0\\Documents\\Schoolwork\\CSE1322\\assignment6\\clientBC.txt");
+        }
     }
 
     public static float getPersonFromFile(String name, String fileName) throws PersonNotFound{
@@ -138,6 +144,9 @@ public class Main {
         }
         catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Error reading data from: " + fileName);
         }
         return 0;
     }
