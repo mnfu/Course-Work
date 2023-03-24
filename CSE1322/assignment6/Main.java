@@ -44,7 +44,8 @@ public class Main {
 
     public static ArrayList<String> getData () {
         ArrayList<String> response = new ArrayList<>();
-        try (Socket s = new Socket("api.coindesk.com", 80)) {
+        try {
+            Socket s = new Socket("api.coindesk.com", 80);
             OutputStream os = s.getOutputStream();
             PrintWriter pw = new PrintWriter(new OutputStreamWriter(os));
             pw.println("GET https://api.coindesk.com/v1/bpi/currentprice.json HTTP/1.0\n\n");
@@ -54,6 +55,7 @@ public class Main {
             while ((tempLine = br.readLine()) != null) {
                 response.add(tempLine);
             }
+            s.close();
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -81,30 +83,26 @@ public class Main {
     }
 
     public static void buyBitCoin(float price) {
-        PrintWriter pw = null;
         try {
             String tempLine;
             File initial = new File("C:\\Users\\BFTH0\\Documents\\Schoolwork\\CSE1322\\assignment6\\initialInvestmentUSD.txt");
             Scanner scan = new Scanner(initial);
             File bitcoin = new File("C:\\Users\\BFTH0\\Documents\\Schoolwork\\CSE1322\\assignment6\\clientBC.txt");
-            pw = new PrintWriter(bitcoin);
+            PrintWriter pw = new PrintWriter(bitcoin);
             while (scan.hasNextLine()) {
                 tempLine = scan.nextLine();
                 String[] data = tempLine.split(":");
                 float bitcoins = Float.parseFloat(data[1])/price;
                 pw.println(data[0] + ":" + bitcoins);
             }
+            pw.flush();
+            pw.close();
         }
         catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
         catch (NumberFormatException e) {
             System.out.println("Error reading data from: C:\\Users\\BFTH0\\Documents\\Schoolwork\\CSE1322\\assignment6\\initialInvestmentUSD.txt");
-        }
-        finally {
-            if (pw != null){
-                pw.close();
-            }
         }
     }
 
