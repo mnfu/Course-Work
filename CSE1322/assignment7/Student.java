@@ -36,6 +36,9 @@ public class Student {
         catch (NumberFormatException nfe) {
             System.out.println("Error reading in student: " + name + "'s data");
         }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: student: " + name + " is missing data");
+        }
     }
 
     public String getName() {
