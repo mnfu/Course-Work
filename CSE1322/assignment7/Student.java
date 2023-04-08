@@ -55,12 +55,7 @@ public class Student {
             }
             total += quizScores[i];
         }
-        if(temp != 100){ //checks to see if temp isn't 100, and if it hasn't changed it just removes 100 from the total
-            total -= temp;
-        }
-        else{
-            total -= 100;
-        }
+        total -= temp; //removes lowest grade
         quizAverage = total / 9.0;
     }
 
@@ -73,12 +68,7 @@ public class Student {
             }
             total += homeworkScores[i];
         }
-        if(temp != 100){ //checks to see if temp isn't 100, and if it hasn't changed it just removes 100 from the total
-            total -= temp;
-        }
-        else{
-            total -= 100;
-        }
+        total -= temp; //removes lowest grade
         homeworkAverage = total / 9.0;
     }
 
