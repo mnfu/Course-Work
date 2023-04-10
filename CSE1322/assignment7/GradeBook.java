@@ -31,7 +31,7 @@ public class GradeBook {
     }
 
     public void getStudentGrade(String name) {
-        if(getStudent(name) != null){
+        if(getStudent(name) == null){
             System.out.println("Student not found!");
             return;
         }
