@@ -3,7 +3,7 @@ package assignment7;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) { //grades.txt is just the test file I made for this assignment
+    public static void main(String[] args) {
         StatisticGradeBook grader = new StatisticGradeBook("C:\\Users\\BFTH0\\Documents\\Schoolwork\\CSE1322\\assignment7\\Assignment7-Spreadsheet.csv");
         Thread t1 = new Thread(grader);
         t1.start();
