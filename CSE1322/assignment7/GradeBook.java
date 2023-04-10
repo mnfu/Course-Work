@@ -31,10 +31,15 @@ public class GradeBook {
     }
 
     public void getStudentGrade(String name) {
+        boolean found = false;
         for(Student s : studentLinkedList){
             if(s.getName().equals(name)){
+                found = true;
                 System.out.println(s.getGrade());
             }
+        }
+        if(!found){
+            System.out.println("Error: student not found");
         }
     }
 
