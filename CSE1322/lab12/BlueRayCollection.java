@@ -9,6 +9,7 @@ public class BlueRayCollection {
         Node current = head;
         if(current.data == null) {
             current.data = new BlueRayDisk(title, director, yearOfRelease, cost);
+            return;
         }
         while(current.next != null){
             current = current.next;
@@ -18,8 +19,11 @@ public class BlueRayCollection {
 
     public void show_all() {
         Node current = head;
-        while(current.next != null){
+        if(current.data != null) {
             System.out.println(current.data.toString());
+        }
+        while(current.next != null){
+            System.out.println(current.next.data.toString());
             current = current.next;
         }
     }
