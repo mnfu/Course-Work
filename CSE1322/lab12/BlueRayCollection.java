@@ -1,30 +1,31 @@
 package lab12;
 
 public class BlueRayCollection {
-    private Node head = new Node(null);
+    private Node head = null;
 
     public BlueRayCollection(){}
 
     public void add(String title, String director, int yearOfRelease, double cost) {
         Node current = head;
-        if(current.data == null) {
-            current.data = new BlueRayDisk(title, director, yearOfRelease, cost);
+        Node temp = new Node(new BlueRayDisk(title, director, yearOfRelease, cost));
+        if(current == null) {
+            head = temp;
             return;
         }
         while(current.next != null){
             current = current.next;
         }
-        current.next = new Node(new BlueRayDisk(title, director, yearOfRelease, cost));
+        current.next = temp;
     }
 
     public void show_all() {
         Node current = head;
-        if(current.data != null) {
+        if(current != null) {
             System.out.println(current.data.toString());
-        }
-        while(current.next != null){
-            System.out.println(current.next.data.toString());
-            current = current.next;
+            while(current.next != null){
+                System.out.println(current.next.data.toString());
+                current = current.next;
+            }
         }
     }
 }
