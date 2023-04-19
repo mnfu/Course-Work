@@ -1,7 +1,7 @@
 package lab13;
 
 public class Calc {
-    public static String calculate(String num1, String num2){
+    public static String add(String num1, String num2){
         try{
             return String.valueOf(Integer.parseInt(num1) + Integer.parseInt(num2));
         }

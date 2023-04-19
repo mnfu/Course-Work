@@ -21,6 +21,6 @@ public class Controller {
     }
     @FXML
     protected void onPlusButtonClick() {
-        sum.setText(Calc.calculate(firstNumber.getText(), secondNumber.getText()));
+        sum.setText(Calc.add(firstNumber.getText(), secondNumber.getText()));
     }
 }
