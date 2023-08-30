@@ -14,8 +14,8 @@ salads = int(input("Number of salad orders "))
 if pizzas % 4 > 0:
     pizzas = pizzas + (4 - pizzas % 4)
 
-totalPizzas = int(pizzas/4)
-pizzaCost = 15.99 * totalPizzas
+fullPizzas = int(pizzas/4)
+pizzaCost = 15.99 * fullPizzas
 saladCost = 7.99 * salads
 totalCost = pizzaCost + saladCost
 deliveryCharge = totalCost * 0.07
@@ -26,7 +26,7 @@ if deliveryCharge < 20:
 pizzaDC = 0
 saladDC = 0
 
-if totalPizzas > 10:
+if fullPizzas > 10:
     pizzaDC = 0.15
 if salads > 10:
     saladDC = 0.15
@@ -37,7 +37,7 @@ totalDiscount = discountedPizza + discountedSalad
 finalCost = totalCost + deliveryCharge - totalDiscount
 
 # Output print statements
-print("Pizzas ordered: " + str(totalPizzas))
+print("Pizzas ordered: " + str(fullPizzas))
 print("Pizza cost $" + str(pizzaCost))
 print("Salad cost $" + str(saladCost))
 print("Total $" + str(totalCost))
