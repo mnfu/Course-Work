@@ -1,5 +1,6 @@
+# Program Name: Lab3.py
 # Course: IT1114/Section W05
-# Student Name: Rob Ives
+# Student Name: Rob
 # Assignment Number: Lab3
 # Due Date: 09/10/2023
 # Purpose: To calculate manager bonuses & total sales for the month
