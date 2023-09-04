@@ -28,8 +28,7 @@ if sales > salesGoal:
     managerBonus = sales * 0.05
 
 # Output print statements
-print("\nDepartment Monthly Sales and Commission\n")
 print("Number of Employees: " + str(salesPerson))
 print("Department Sales Goal: $" + str(salesGoal))
-print("Total Sales: $" + str('{:,.2f}'.format(sales)))
-print("Mgr. Bonus: $" + str('{:,.2f}'.format(managerBonus)))
+print("Total Sales: $" + str(sales))
+print("Mgr. Bonus: $" + str(managerBonus))
