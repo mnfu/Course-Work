@@ -1,7 +1,7 @@
-# Program Name: Lab3.py
+# Program Name: Lab4.py
 # Course: IT1114/Section W05
 # Student Name: Rob
-# Assignment Number: Lab3
+# Assignment Number: Lab4
 # Due Date: 09/17/2023
 # Purpose: Determine the cost of a resort vacation
 # Resources: Lecture Videos & docs.python.org
