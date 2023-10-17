@@ -1,4 +1,7 @@
 # Course Work Repository
-## Current Course: IT1114
+## Current Course: IT1114/L
 
-Saved here so I can look back on it later, and so I can get feedback easily on things to improve upon.
+### Past Courses:
+- CSE1322/L
+
+Saved for archival purposes
